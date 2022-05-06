@@ -1,15 +1,23 @@
 class Account():
     
     def __init__(self, account_number):
-        self.account_number = account_number
-        self.balance = 0
+        self._account_number = account_number
+        self._balance = 0
     
     def __str__(self):
-        return f'>>Account Number: {self.account_number}, Balance: {self.balance}<<'
+        return f'>>Account Number: {self._account_number}, Balance: {self._balance}<<'
         
     def deposit(self, value):
-        self.balance += value
+        self._balance += value
 
+class CheckingAccount(Account):
+    def end_of_month(self):
+        self._balance -= 3
+
+class SavingAccount(Account):
+    def end_of_month(self):
+        self._balance *= 1.01
+        self._balance -= 3
 
 harry_account = Account(1234)
 leah_account = Account(4321)
@@ -24,6 +32,16 @@ for account in accounts:
 #Writing the same thing as above, but with list comprehension
 [print(account) for account in accounts]
 
-
 # Tuples are immutable, although the elements inside are not. So I cannot change which objects are in the tuple, but the objects are mutable, so they can change
 tuple_of_accounts = (harry_account, leah_account)
+
+checking_account = CheckingAccount(6789)
+checking_account.deposit(1000)
+saving_account = SavingAccount(9876)
+checking_account.deposit(1000)
+accounts = [checking_account, saving_account]
+
+# Here I am using duck typing and polimorphism to do the end of month routine to all my accounts, and each account will act differently depending of what account type it is
+for account in accounts:
+    account.end_of_month()
+    print(account)
