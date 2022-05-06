@@ -27,11 +27,11 @@ class SavingAccount(Account):
 class InvestingAccount(Account):
     pass
 
-harry_account = Account(1234)
-leah_account = Account(4321)
-harry_account.deposit(100)
-leah_account.deposit(1000)
-accounts = [harry_account, leah_account]
+#harry_account = Account(1234)
+#leah_account = Account(4321)
+#harry_account.deposit(100)
+#leah_account.deposit(1000)
+#accounts = [harry_account, leah_account]
 
 print(accounts) #This does not call the __str__ method inside the Class, since I'm printing the list as a whole
 #Printing the accounts individually so python access the __str__ method
