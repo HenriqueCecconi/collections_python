@@ -23,3 +23,7 @@ for account in accounts:
     print(account)
 #Writing the same thing as above, but with list comprehension
 [print(account) for account in accounts]
+
+
+# Tuples are immutable, although the elements inside are not. So I cannot change which objects are in the tuple, but the objects are mutable, so they can change
+tuple_of_accounts = (harry_account, leah_account)
