@@ -1,4 +1,5 @@
-class Account():
+from abc import ABCMeta, abstractmethod
+class Account(metaclass = ABCMeta):
     
     def __init__(self, account_number):
         self._account_number = account_number
@@ -10,6 +11,10 @@ class Account():
     def deposit(self, value):
         self._balance += value
 
+    @abstractmethod
+    def end_of_month(self):
+        pass
+
 class CheckingAccount(Account):
     def end_of_month(self):
         self._balance -= 3
@@ -18,6 +23,9 @@ class SavingAccount(Account):
     def end_of_month(self):
         self._balance *= 1.01
         self._balance -= 3
+
+class InvestingAccount(Account):
+    pass
 
 harry_account = Account(1234)
 leah_account = Account(4321)
